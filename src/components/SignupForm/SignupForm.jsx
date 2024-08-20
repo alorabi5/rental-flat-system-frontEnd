@@ -5,7 +5,7 @@ import * as authService from "../../services/authService";
 const SignupForm = (props) => {
   const navigate = useNavigate();
   const [message, setMessage] = useState([""]);
-  const [isChecked, setIsChecked] = useState(false);
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -18,9 +18,6 @@ const SignupForm = (props) => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  const handleOnChange = () => {
-    setIsChecked(!isChecked);
   };
 
   const handleSubmit = async (e) => {
@@ -54,14 +51,6 @@ const SignupForm = (props) => {
             name="username"
             onChange={handleChange}
           />
-          <label htmlFor="isOwner">Is Owner</label>
-          <input
-            type="checkbox"
-            id="isOwner"
-            name="isOwner"
-            checked={isChecked}
-            onChange={handleOnChange}
-          ></input>
         </div>
         <div>
           <label htmlFor="password">Password:</label>

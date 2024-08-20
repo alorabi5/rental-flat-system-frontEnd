@@ -1,19 +1,16 @@
-import { Link } from 'react-router-dom';
-import { AuthedUserContext } from '../../App';
-import { useContext } from 'react';
-
+import { Link } from "react-router-dom";
+import { AuthedUserContext } from "../../App";
+import { useContext } from "react";
+import "../NavBar/NavBar.css";
 const NavBar = ({ handleSignout }) => {
   const user = useContext(AuthedUserContext);
   return (
     <>
       {user ? (
-        <nav>
-          <ul>
+        <nav className="NavBar">
+          <ul className="Nav">
             <li>Welcome, {user.username}</li>
-            <li>
-              <Link to="/">Dashboard</Link>
-            </li>
-            
+
             <li>
               <Link to="/Flats">Flats</Link>
             </li>
@@ -31,8 +28,6 @@ const NavBar = ({ handleSignout }) => {
                 Sign Out
               </Link>
             </li>
-
-
           </ul>
         </nav>
       ) : (
