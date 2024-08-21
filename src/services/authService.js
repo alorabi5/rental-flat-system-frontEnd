@@ -1,4 +1,4 @@
-const BACKEND_URL = import.meta.env.VITE_EXPRESS_BACKEND_URL;
+const BACKEND_URL = import.meta.env.VITE_BACK_END_SERVER_URL;
 
 const getUser = () => {
   const token = localStorage.getItem('token');
@@ -51,4 +51,4 @@ const signout = () => {
   localStorage.removeItem('token');
 };
 
-export { signup, signin, getUser, signout };
+export default { signup, signin, getUser, signout };

@@ -1,26 +1,29 @@
 import { Link } from "react-router-dom";
-import { AuthedUserContext } from "../../App";
-import { useContext } from "react";
 import "../NavBar/NavBar.css";
-const NavBar = ({ handleSignout }) => {
-  const user = useContext(AuthedUserContext);
+const NavBar = ({ user, handleSignout }) => {
   return (
     <>
       {user ? (
         <nav className="NavBar">
           <ul className="Nav">
-            <li>Welcome, {user.username}</li>
-
             <li>
-              <Link to="/Flats">Flats</Link>
+              <Link to="/">Home</Link>
             </li>
 
             <li>
-              <Link to="/Flats/Owned">Owned Flats</Link>
+              <Link to="/flats">Flats</Link>
             </li>
 
             <li>
-              <Link to="Flats/yourRental">Your Rental</Link>
+              <Link to="/flats/owned">Owned Flats</Link>
+            </li>
+
+            <li>
+              <Link to="/rental">Your Rental</Link>
+            </li>
+
+            <li>
+              <Link to="flats/new">New Flat</Link>
             </li>
 
             <li>
