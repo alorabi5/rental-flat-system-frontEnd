@@ -1,8 +1,4 @@
-import { AuthedUserContext } from "../../App";
-import { useContext } from "react";
-
-const Dashboard = ({}) => {
-  const user = useContext(AuthedUserContext);
+const Dashboard = ({user}) => {
   return (
     <main>
       <h1>Welcome, {user.username}</h1>
