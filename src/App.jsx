@@ -46,7 +46,7 @@ const App = () => {
     try {
       const newFlat = await flatService.create(formData);
       setFlatList([newFlat, ...flatList]);
-      navigate('/flat')
+      navigate('/flats')
     } catch (error) {
       console.log(error);
     }
