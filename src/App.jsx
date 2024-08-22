@@ -43,13 +43,9 @@ const App = () => {
 
 
   const handleAddFlat = async (formData) => {
-    try {
       const newFlat = await flatService.create(formData);
       setFlatList([newFlat, ...flatList]);
       navigate('/flats')
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   useEffect(() => {
@@ -64,13 +60,7 @@ const App = () => {
   }, [user]);
 
   const handleUpdateFlat = async (formData, flatId) => {
-    try {
       const updatedFlat = await flatService.updateFlat(formData, flatId);
-
-      // handle potential errors
-      if (updatedFlat.error) {
-        throw new Error(updatedFlat.error);
-      }
 
       const updatedflatList = flatList.map((flat) =>
         // If the id of the current flat is not the same as the updated flat's id, return the existing flat. If the id's match, instead return the updated flat.
@@ -81,9 +71,6 @@ const App = () => {
       // If we don't set selected to the updated flat object, the details page will reference outdated data until the page reloads.
       setSelected(updatedFlat);
       setIsFormOpen(false);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
