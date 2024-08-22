@@ -47,3 +47,9 @@
 .landing button:hover {
   background-color: #3e8e41;
 }
+.landing-descrbtion h1 {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 12px;
+}
