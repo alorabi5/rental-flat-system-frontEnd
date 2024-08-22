@@ -1,0 +1,101 @@
+.sign-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.sign-in h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.sign-in p {
+  font-size: 1.2rem;
+  color: #e74c3c;
+  margin-bottom: 1.5rem;
+}
+
+.sign-in-form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.sign-in-form div {
+  margin-bottom: 1.5rem;
+}
+
+.sign-in-form label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.sign-in-form input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  background-color: #f5f5f5;
+  transition: border-color 0.3s ease;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.sign-in-form input:focus {
+  outline: none;
+  border-color: #2980b9;
+}
+
+.sign-in-form .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign-in-form button {
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sign-in-form .log-in {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sign-in-form .log-in:hover {
+  background-color: #2871a2;
+}
+
+.sign-in-form .Cancel {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.sign-in-form .Cancel:hover {
+  background-color: #e6e6e6;
+}

@@ -1,0 +1,46 @@
+/* FlatForm.css */
+
+/* Styles for the container and headings */
+main {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  color: #000000;
+}
+
+/* Styles for the list */
+ul {
+  list-style-type: none; /* Remove default list bullets */
+  padding: 0; /* Remove default padding */
+}
+
+li {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Link styles for each flat item */
+.flatList {
+  text-decoration: none;
+  color: inherit; /* Inherit color from li */
+}
+
+.flatList:hover li {
+  background-color: #f0f0f0;
+  color: #007bff;
+}
+
+.flatList:active li {
+  background-color: #ddd;
+}
+
+/* Styles for "No Flats Yet!" message */
+h2 {
+  font-size: 1.2em;
+  color: #202020;
+}

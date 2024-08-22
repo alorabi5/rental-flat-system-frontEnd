@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/authService";
+import "../SignupForm/SignupForm.css";
 
 const SignupForm = (props) => {
   const navigate = useNavigate();
@@ -8,6 +9,7 @@ const SignupForm = (props) => {
 
   const [formData, setFormData] = useState({
     username: "",
+    isOwner: false,
     password: "",
     passwordConf: "",
   });
@@ -17,7 +19,12 @@ const SignupForm = (props) => {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -31,14 +38,14 @@ const SignupForm = (props) => {
     }
   };
 
-  const { username, password, passwordConf } = formData;
+  const { username, isOwner, password, passwordConf } = formData;
 
   const isFormInvalid = () => {
     return !(username && password && password === passwordConf);
   };
 
   return (
-    <main>
+    <main className="sign-up">
       <h1>Sign Up</h1>
       <p>{message}</p>
       <form onSubmit={handleSubmit}>
@@ -46,9 +53,18 @@ const SignupForm = (props) => {
           <label htmlFor="username">Username:</label>
           <input
             type="text"
-            id="name"
+            id="username"
             value={username}
             name="username"
+            onChange={handleChange}
+          />
+
+          <label htmlFor="isOwner">Is Owner</label>
+          <input
+            type="checkbox"
+            id="isOwner"
+            name="isOwner"
+            checked={isOwner}
             onChange={handleChange}
           />
         </div>
@@ -73,9 +89,11 @@ const SignupForm = (props) => {
           />
         </div>
         <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
+          <button className="sign-up-button" disabled={isFormInvalid()}>
+            Sign Up
+          </button>
           <Link to="/">
-            <button>Cancel</button>
+            <button className="cancel">Cancel</button>
           </Link>
         </div>
       </form>

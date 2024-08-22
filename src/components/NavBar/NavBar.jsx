@@ -23,9 +23,7 @@ const NavBar = ({ user, handleSignout }) => {
             </li>
 
             <li>
-              <Link to="flat/form">
-                New Flat
-              </Link>
+              <Link to="flat/form">New Flat</Link>
             </li>
 
             <li>
@@ -36,8 +34,8 @@ const NavBar = ({ user, handleSignout }) => {
           </ul>
         </nav>
       ) : (
-        <nav>
-          <ul>
+        <nav className="sign-in-up">
+          <ul className="nav-sgin-in-up">
             <li>
               <Link to="/signin">Sign In</Link>
             </li>
