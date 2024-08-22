@@ -21,7 +21,6 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser()); // using the method from authservice
   const [flatList, setFlatList] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [isFormOpen, setIsFormOpen] = useState(false);
   const navigate = useNavigate()
 
   const handleSignout = () => {
@@ -33,23 +32,15 @@ const App = () => {
     setSelected(flat);
   };
 
-  const handleFormView = (flat) => {
-    if (!flat.location) setSelected(null);
-    setIsFormOpen(!isFormOpen);
-  };
 
   // ------------------------ Flat Form ------------------------
 
 
 
   const handleAddFlat = async (formData) => {
-    try {
       const newFlat = await flatService.create(formData);
       setFlatList([newFlat, ...flatList]);
-      navigate('/flat')
-    } catch (error) {
-      console.log(error);
-    }
+      navigate('/flats')
   };
 
   useEffect(() => {
@@ -64,13 +55,7 @@ const App = () => {
   }, [user]);
 
   const handleUpdateFlat = async (formData, flatId) => {
-    try {
       const updatedFlat = await flatService.updateFlat(formData, flatId);
-
-      // handle potential errors
-      if (updatedFlat.error) {
-        throw new Error(updatedFlat.error);
-      }
 
       const updatedflatList = flatList.map((flat) =>
         // If the id of the current flat is not the same as the updated flat's id, return the existing flat. If the id's match, instead return the updated flat.
@@ -80,10 +65,6 @@ const App = () => {
       setFlatList(updatedflatList);
       // If we don't set selected to the updated flat object, the details page will reference outdated data until the page reloads.
       setSelected(updatedFlat);
-      setIsFormOpen(false);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
@@ -99,8 +80,6 @@ const App = () => {
                 <FlatList
                   flatList={flatList}
                   updateSelected={updateSelected}
-                  handleFormView={handleFormView}
-                  isFormOpen={isFormOpen}
                 />
               }
             />
@@ -117,7 +96,7 @@ const App = () => {
             />
 
             <Route
-              path="/rentals/:rentalId"
+              path="/flats/:flatId"
               element={
                 <FlatDetails
                   selected={selected}

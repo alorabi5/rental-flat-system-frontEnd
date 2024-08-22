@@ -5,9 +5,9 @@ import authService from "../../services/authService";
 const SignupForm = (props) => {
   const navigate = useNavigate();
   const [message, setMessage] = useState([""]);
-
   const [formData, setFormData] = useState({
     username: "",
+    isOwner: false, 
     password: "",
     passwordConf: "",
   });
@@ -17,13 +17,18 @@ const SignupForm = (props) => {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Updated to handle checkbox change for isOwner
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newUserResponse = await authService.signup(formData);
+      const newUserResponse = await authService.signup(formData); // isOwner included in formData
       props.setUser(newUserResponse.user);
       navigate("/");
     } catch (err) {
@@ -31,7 +36,7 @@ const SignupForm = (props) => {
     }
   };
 
-  const { username, password, passwordConf } = formData;
+  const { username, isOwner, password, passwordConf } = formData;
 
   const isFormInvalid = () => {
     return !(username && password && password === passwordConf);
@@ -46,10 +51,19 @@ const SignupForm = (props) => {
           <label htmlFor="username">Username:</label>
           <input
             type="text"
-            id="name"
+            id="username" // Fixed id to match the label
             value={username}
             name="username"
             onChange={handleChange}
+          />
+
+          <label htmlFor="isOwner">Is Owner</label>
+          <input
+            type="checkbox"
+            id="isOwner"
+            name="isOwner"
+            checked={isOwner} // Using isOwner state
+            onChange={handleChange} // Updated to handle checkbox changes
           />
         </div>
         <div>
@@ -75,7 +89,7 @@ const SignupForm = (props) => {
         <div>
           <button disabled={isFormInvalid()}>Sign Up</button>
           <Link to="/">
-            <button>Cancel</button>
+            <button type="button">Cancel</button> {/* Added type="button" to prevent form submission */}
           </Link>
         </div>
       </form>
