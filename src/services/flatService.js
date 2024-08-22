@@ -41,4 +41,36 @@ const show = async (flatId) => {
   }
 };
 
-export default { index, create, show };
+const update = async (formData, flatId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${flatId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    return res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+const deleteFlat = async (flatId) => {
+  try {
+    const deleteFlat = await fetch(`${BASE_URL}/${flatId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    });
+    return deleteFlat;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export default { index, create, show, update, deleteFlat };

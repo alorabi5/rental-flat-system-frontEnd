@@ -22,7 +22,7 @@ const App = () => {
   const [flatList, setFlatList] = useState([]);
   const [selected, setSelected] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSignout = () => {
     authService.signout();
@@ -35,7 +35,8 @@ const App = () => {
 
   const handleFormView = (flat) => {
     if (!flat.location) setSelected(null);
-    setIsFormOpen(!isFormOpen);
+    // setIsFormOpen(!isFormOpen);
+    navigate("/flat/form");
   };
 
   // ------------------------ Flat Form ------------------------
@@ -46,7 +47,7 @@ const App = () => {
     try {
       const newFlat = await flatService.create(formData);
       setFlatList([newFlat, ...flatList]);
-      navigate('/flat')
+      navigate('/flat');
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +66,7 @@ const App = () => {
 
   const handleUpdateFlat = async (formData, flatId) => {
     try {
-      const updatedFlat = await flatService.updateFlat(formData, flatId);
+      const updatedFlat = await flatService.update(formData, flatId);
 
       // handle potential errors
       if (updatedFlat.error) {
@@ -80,7 +81,24 @@ const App = () => {
       setFlatList(updatedflatList);
       // If we don't set selected to the updated flat object, the details page will reference outdated data until the page reloads.
       setSelected(updatedFlat);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  const handleRemoveFlat = async (flatId) => {
+    try {
+      const deletedFlat = await flatService.deleteFlat(flatId);
+
+      if (deletedFlat.error) {
+        throw new Error(deletedFlat.error);
+      }
+
+      setFlatList(flatList.filter((flat) => flat._id !== deletedFlat._id));
+      setSelected(null);
       setIsFormOpen(false);
+      navigate("/flat");
     } catch (error) {
       console.log(error);
     }
@@ -88,13 +106,13 @@ const App = () => {
 
   return (
     <>
-      <NavBar user={user} handleSignout={handleSignout} />
+      <NavBar user={user} handleSignout={handleSignout} setSelected={setSelected}/>
       <Routes>
         {user ? (
           <>
             <Route path="/" element={<Dashboard user={user} />} />
             <Route
-              path="/flats"
+              path="/flat"
               element={
                 <FlatList
                   flatList={flatList}
@@ -106,7 +124,7 @@ const App = () => {
             />
 
             <Route
-              path="/flats/new"
+              path="/flat/form"
               element={
                 <FlatForm
                   handleAddFlat={handleAddFlat}
@@ -117,11 +135,13 @@ const App = () => {
             />
 
             <Route
-              path="/rentals/:rentalId"
+              path="/flat/:flatId"
               element={
                 <FlatDetails
                   selected={selected}
+                  handleFormView={handleFormView}
                   handleUpdateFlat={handleUpdateFlat}
+                  handleRemoveFlat={handleRemoveFlat}
                 />
               }
             />

@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const FlatForm = (props) => {
+
+  const navigate = useNavigate();
+
   const initialState = {
     price: 0,
     location: "",
@@ -15,7 +19,9 @@ const FlatForm = (props) => {
   );
 
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    event.target.name === "isBooked"
+      ? setFormData({ ...formData, [event.target.name]: event.target.checked })
+      : setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
@@ -27,6 +33,7 @@ const FlatForm = (props) => {
       props.handleAddFlat(formData);
     }
     setFormData(initialState);
+    navigate("/flat");
   };
 
   return (
@@ -52,7 +59,7 @@ const FlatForm = (props) => {
         <input
           type="checkbox"
           name="isBooked"
-          value={formData.isBooked}
+          checked={formData.isBooked}
           onChange={handleChange}
         />
         <br />
@@ -80,7 +87,9 @@ const FlatForm = (props) => {
           onChange={handleChange}
         />
         <br />
-        <button type="submit">Add New Flat</button>
+        <button type="submit">
+          {props.selected ? "Update Flat" : "Add New Flat"}
+        </button>
       </form>
     </div>
   );

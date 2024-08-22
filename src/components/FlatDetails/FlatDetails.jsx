@@ -6,7 +6,9 @@ const FlatDetails = (props) => {
       <div>
         <img src={props.selected.imageUrl} alt={props.selected.imageAlt} />
         <h1>{props.selected.price}$</h1>
-        <h2>Is Booked: {props.selected.isBooked? "Available" : "Not Available"}</h2>
+        <h2>
+          Is Booked: {props.selected.isBooked ? "Available" : "Not Available"}
+        </h2>
         <h2>Location: {props.selected.location}</h2>
         <h2>Description: {props.selected.description}</h2>
 
@@ -15,7 +17,11 @@ const FlatDetails = (props) => {
             props.handleFormView(props.selected);
           }}
         >
-          Edit
+          Edit Flate
+        </button>
+
+        <button onClick={() => props.handleRemoveFlat(props.selected._id)}>
+          Delete
         </button>
       </div>
     );

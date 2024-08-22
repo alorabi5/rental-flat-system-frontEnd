@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 const FlatList = (props) => {
   const flats = props.flatList.map((flat, index) => {
     return (
-      <a key={index} onClick={() => props.updateSelected(flat)}>
-        <li>{flat.location}</li>
-      </a>
+        <Link
+          key={index}
+          to={`${flat._id}`}
+          onClick={() => props.updateSelected(flat)}
+        >
+          <li>{flat.location}</li>
+        </Link>
     );
   });
 
