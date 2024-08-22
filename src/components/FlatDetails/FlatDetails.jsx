@@ -7,7 +7,7 @@ const FlatDetails = (props) => {
         <img src={props.selected.imageUrl} alt={props.selected.imageAlt} />
         <h1>{props.selected.price}$</h1>
         <h2>
-          Is Booked: {props.selected.isBooked ? "Available" : "Not Available"}
+          Is Booked: {props.selected.isBooked ? "Not Available" : "Available"}
         </h2>
         <h2>Location: {props.selected.location}</h2>
         <h2>Description: {props.selected.description}</h2>
