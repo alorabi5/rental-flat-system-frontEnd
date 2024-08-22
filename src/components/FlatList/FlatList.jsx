@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
 
+import "../FlatList/FlatList.css";
+
 const FlatList = (props) => {
   const flats = props.flatList.map((flat, index) => {
     return (
-      <a key={index} onClick={() => props.updateSelected(flat)}>
-        <li>{flat.location}</li>
-      </a>
+        <Link className="flatList"
+          key={index}
+          to={`${flat._id}`}
+          onClick={() => props.updateSelected(flat)}
+        >
+          <li>{flat.location}</li>
+        </Link>
     );
   });
 
