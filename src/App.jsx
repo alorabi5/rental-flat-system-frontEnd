@@ -21,7 +21,6 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser()); // using the method from authservice
   const [flatList, setFlatList] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [isFormOpen, setIsFormOpen] = useState(false);
   const navigate = useNavigate()
 
   const handleSignout = () => {
@@ -33,10 +32,6 @@ const App = () => {
     setSelected(flat);
   };
 
-  const handleFormView = (flat) => {
-    if (!flat.location) setSelected(null);
-    setIsFormOpen(!isFormOpen);
-  };
 
   // ------------------------ Flat Form ------------------------
 
@@ -70,7 +65,6 @@ const App = () => {
       setFlatList(updatedflatList);
       // If we don't set selected to the updated flat object, the details page will reference outdated data until the page reloads.
       setSelected(updatedFlat);
-      setIsFormOpen(false);
   };
 
   return (
@@ -86,8 +80,6 @@ const App = () => {
                 <FlatList
                   flatList={flatList}
                   updateSelected={updateSelected}
-                  handleFormView={handleFormView}
-                  isFormOpen={isFormOpen}
                 />
               }
             />
