@@ -1,5 +1,5 @@
 // src/services/flatService.js
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/flat`;
+const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/flat`;
 
 const index = async () => {
   try {

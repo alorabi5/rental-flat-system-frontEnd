@@ -1,6 +1,7 @@
+import "../Landing/Landing.css";
 const Landing = () => {
   return (
-    <main>
+    <main className="landing">
       <h1>
         Hello, you are on the landing page for visitors. bhh morre edits more
         editing{" "}

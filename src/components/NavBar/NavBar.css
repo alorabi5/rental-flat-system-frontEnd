@@ -1,0 +1,55 @@
+.NavBar {
+  background-color: #e7e4e4;
+  padding: 1rem 0;
+}
+
+.Nav {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Nav li {
+  margin: 0 1rem;
+}
+
+.Nav li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.Nav li a:hover {
+  color: #ddd;
+}
+
+.sign-in-up {
+  background-color: #e7e4e4;
+  padding: 1rem 0;
+}
+
+.nav-sgin-in-up {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-sgin-in-up li {
+  margin: 0 1rem;
+}
+
+.nav-sgin-in-up li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-sgin-in-up li a:hover {
+  color: #555;
+}

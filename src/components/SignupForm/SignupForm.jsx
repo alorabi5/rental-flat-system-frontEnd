@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/authService";
+import "../SignupForm/SignupForm.css";
 
 const SignupForm = (props) => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const SignupForm = (props) => {
   };
 
   return (
-    <main>
+    <main className="sign-up">
       <h1>Sign Up</h1>
       <p>{message}</p>
       <form onSubmit={handleSubmit}>
@@ -73,9 +74,11 @@ const SignupForm = (props) => {
           />
         </div>
         <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
+          <button className="sign-up-button" disabled={isFormInvalid()}>
+            Sign Up
+          </button>
           <Link to="/">
-            <button>Cancel</button>
+            <button className="cancel">Cancel</button>
           </Link>
         </div>
       </form>
