@@ -36,7 +36,7 @@ const App = () => {
   const handleFormView = (flat) => {
     if (!flat.location) setSelected(null);
     // setIsFormOpen(!isFormOpen);
-    navigate("/flat/form");
+    navigate("/flat-form");
   };
 
   // ------------------------ Flat Form ------------------------
@@ -124,7 +124,7 @@ const App = () => {
             />
 
             <Route
-              path="/flat/form"
+              path="/flat-form"
               element={
                 <FlatForm
                   handleAddFlat={handleAddFlat}

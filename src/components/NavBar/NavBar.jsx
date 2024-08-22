@@ -15,7 +15,7 @@ const NavBar = ({ user, handleSignout }) => {
             </li>
 
             <li>
-              <Link to="/flat/owned">Owned Flats</Link>
+              <Link to="/flat-owned">Owned Flats</Link>
             </li>
 
             <li>
@@ -23,7 +23,7 @@ const NavBar = ({ user, handleSignout }) => {
             </li>
 
             <li>
-              <Link to="flat/form">New Flat</Link>
+              <Link to="/flat-form">New Flat</Link>
             </li>
 
             <li>
