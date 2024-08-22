@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
 const FlatList = (props) => {
-  const flats = props.flatList.map((flat, index) => {
+  const flats = props.flatList.map((flat) => {
     return (
-      <a key={index} onClick={() => props.updateSelected(flat)}>
+      <Link key={flat._id} to={`/flats/${flat._id}`} onClick={() => props.updateSelected(flat)}>
         <li>{flat.location}</li>
-      </a>
+      </Link>
     );
   });
 
@@ -15,10 +15,6 @@ const FlatList = (props) => {
         <div>
           <h2>Flat List</h2>
           {!props.flatList.length ? <h2>No Flats Yet!</h2> : <ul>{flats}</ul>}
-
-          {/* <button onClick={props.handleFormView}>
-            {props.isFormOpen ? "Close Form" : "New Flats"}
-          </button> */}
         </div>
       </main>
     </>

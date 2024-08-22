@@ -117,7 +117,7 @@ const App = () => {
             />
 
             <Route
-              path="/rentals/:rentalId"
+              path="/flats/:flatId"
               element={
                 <FlatDetails
                   selected={selected}
